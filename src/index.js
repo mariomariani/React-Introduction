@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-function App(props) {
-    return(
-        <div><h1>Hola Mundo {props.myProp}</h1></div>
-    )
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div><h1>Hola Mundo {this.props.myProp}</h1></div>
+        )
+    }
 }
 
 ReactDOM.render(
