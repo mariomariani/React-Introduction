@@ -15,6 +15,9 @@ class App extends Component {
             this.setState({
                 text: new Date().toLocaleTimeString()
             });
+            // this.setState( (prevState) => ({
+            //     text: new Date().toLocaleTimeString()
+            // }));
         }, 1000);
     }
  
