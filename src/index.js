@@ -1,34 +1,25 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
+import SearchBar from './components/search_bar';
+
 class App extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            text: ' con estado'
-        }
-
-
-        window.setInterval(() => {
-            this.setState({
-                text: new Date().toLocaleTimeString()
-            });
-            // this.setState( (prevState) => ({
-            //     text: new Date().toLocaleTimeString()
-            // }));
-        }, 1000);
     }
  
     render() {
         return (
-            <div><h1>Hola Mundo {this.props.myProp} {this.state.text}</h1></div>
+             <div>
+                <SearchBar/>
+            </div>
         )
     }
 }
 
 ReactDOM.render(
-    <App myProp = ' en React'/>,
+    <App/>,
     document.querySelector('.container')
 )
