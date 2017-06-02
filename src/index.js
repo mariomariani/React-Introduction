@@ -14,26 +14,35 @@ class App extends Component {
         super(props);
 
         this.state = {
-            videos: []
+            videos: [],
+            selectedVideo: null
         }
 
+        this.onVideoSelect = this.onVideoSelect.bind(this);
         this.videoSearch('accedo');
     }
 
     videoSearch(searchText) {
         YTSearch({key: API_KEY,searchText: searchText},(videos) => {
             this.setState((prevState)=>({
-                videos: videos
+                videos: videos,
+                selectedVideo: videos[0]
             }));
         });
+    }
+
+    onVideoSelect(selectedVideo) {
+        this.setState({selectedVideo})
     }
  
     render() {
         return (
              <div>
                 <SearchBar/>
-                <VideoDetail video={this.state.videos[0]}/>
-                <VideoList videos={this.state.videos}/>
+                <VideoDetail video={this.state.selectedVideo}/>
+                <VideoList 
+                    videos={this.state.videos}
+                    onVideoSelect = {this.onVideoSelect}/>
             </div>
         )
     }
