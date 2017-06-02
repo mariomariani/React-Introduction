@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 
-const searchBar = () => {
-    return (
-         <div className="search-bar">
-                <input/>
-                <p>Valor de busqueda: </p>
-        </div>
-    )
+class searchBar extends Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+
+        this.state = {
+            searchText: ''
+        };
+
+        this.onInputChange = this.onInputChange.bind(this);
+    }
+
+    onInputChange(event) {
+        let searchText = event.target.value;
+        this.setState(prevState => ({searchText})); //searchText:searchText
+    }
+
+    render() {
+        return (
+            <div className="search-bar">
+                    <input value={this.state.searchText} onChange={this.onInputChange}/>
+                    <p>Valor de busqueda: {this.state.searchText}</p>
+            </div>
+        )
+    }
 }
 
 export default searchBar;
